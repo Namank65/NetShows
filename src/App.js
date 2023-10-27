@@ -1,9 +1,7 @@
+import Body from "./Components/Body";
+
 function App() {
-  return (
-    <div >
-      <h1 className='bg-slate-500'>Hello World</h1>
-    </div>
-  );
+  return <Body/>
 }
 
 export default App;
