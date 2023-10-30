@@ -24,7 +24,6 @@ const Login = () => {
 
       <Header />
 
-
       <div className='absolute'>
         <img className='w-screen h-screen' src='https://miro.medium.com/v2/resize:fit:1400/format:webp/1*5lyavS59mazOFnb55Z6znQ.png' />
       </div>
@@ -36,6 +35,7 @@ const Login = () => {
 
         <input type='email' ref={email} placeholder='Email Address' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />
         <input type='password' ref={password} placeholder='Password' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />
+
         <p className='text-red-600 font-bold py-2'>{errorMessage}</p>
         <button className='p-3 my-5 bg-red-700 w-72 font-bold rounded-lg ' onClick={SubmitBtnClick}>{isSignIn ? "Sign In" : "Sign Up"}</button>
         <p className='cursor-pointer py-4' onClick={toggleForm} style={{ color: isSignIn ? "white" : "skyblue" }}>{isSignIn ? "New to Net Show ? Sign Up now" : "Already A User ? Sign In Now "}</p>
@@ -43,6 +43,6 @@ const Login = () => {
 
     </div>
   )
-}
+};
 
 export default Login;
