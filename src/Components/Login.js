@@ -1,18 +1,22 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { CheckValidition } from '../Utils/LoginValidition';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../Utils/fireBase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../Utils/UserSlice';
 
 const Login = () => {
 
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, seterrorMessage] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const SubmitBtnClick = () => {
     const errMsg = CheckValidition(email.current.value, password.current.value);
@@ -25,8 +29,18 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user)
-          navigate("/browse");
+          updateProfile(user, {
+            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/127884520?v=4"
+          }).then(() => {
+            // Profile updated!
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
+            navigate("/browse");
+
+          }).catch((error) => {
+            // An error occurred
+            seterrorMessage(error.message)
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -66,7 +80,7 @@ const Login = () => {
 
       <form className='bg-black bg-opacity-80 text-white h-auto w-96 py-10 px-10 m-5 mx-auto my-auto top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
         <h1 className='p-2 my-2 font-bold text-3xl'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
-        {!isSignIn && (<input type='text' placeholder='User Name' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
+        {!isSignIn && (<input type='text' ref={name} placeholder='User Name' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
         {!isSignIn && (<input type='number' placeholder='Enter Your Phone Number' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
 
         <input type='email' ref={email} placeholder='Email Address' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />
