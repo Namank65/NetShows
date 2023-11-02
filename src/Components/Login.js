@@ -3,15 +3,14 @@ import Header from './Header';
 import { CheckValidition } from '../Utils/LoginValidition';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../Utils/fireBase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../Utils/UserSlice';
+import {LogInBgImg, USER_AVTAR} from "../Utils/Constants"
 
 const Login = () => {
 
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, seterrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -30,12 +29,11 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/127884520?v=4"
+            displayName: name.current.value, photoURL: USER_AVTAR
           }).then(() => {
             // Profile updated!
             const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
-            navigate("/browse");
+            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
 
           }).catch((error) => {
             // An error occurred
@@ -54,12 +52,12 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user)
-          navigate("/browse");
+
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          seterrorMessage(errorCode + " - " + errorMessage)
+          seterrorMessage(errorCode + " - " + errorMessage);
         });
     }
 
@@ -75,7 +73,7 @@ const Login = () => {
       <Header />
 
       <div className='absolute'>
-        <img className='w-screen h-screen' src='https://miro.medium.com/v2/resize:fit:1400/format:webp/1*5lyavS59mazOFnb55Z6znQ.png' />
+        <img className='w-screen h-screen' alt='LogInBgImg' src={LogInBgImg} />
       </div>
 
       <form className='bg-black bg-opacity-80 text-white h-auto w-96 py-10 px-10 m-5 mx-auto my-auto top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
