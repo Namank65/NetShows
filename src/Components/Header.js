@@ -46,7 +46,7 @@ const Header = () => {
     <div className='flex absolute bg-gradient-to-b from-black z-10 w-screen justify-between'>
       <img alt='logo' src={logo} className=' w-64 ' />
 
-      {user && (<div className='flex my-2 p-4'>
+      {user && (<div className='flex w-[12%] my-2 p-4'>
         <img className='w-16 p-2 rounded-full' alt='UserPic' src={user?.photoURL} />
         <button className='px-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800' onClick={SignOutHandeler}>Log Out</button>
       </div>)}
