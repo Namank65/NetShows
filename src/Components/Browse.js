@@ -15,6 +15,6 @@ const Browse = () => {
       <SecondContainer/>
     </div>
   )
-}
+};
 
 export default Browse;
