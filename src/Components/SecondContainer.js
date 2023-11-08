@@ -11,13 +11,13 @@ const SecondContainer = () => {
     <div className='bg-black'>
       <div className='-mt-52 pl-9 relative'>
       <MovieList title={"Now Playing"} movies={movies.addNowPlayingMovies}/>
-      <MovieList title={"Horror Movies"} movies={movies.addNowPlayingMovies}/>
-      <MovieList title={"Drama Movies"} movies={movies.addNowPlayingMovies}/>
+      <MovieList title={"Top Rated Movies"} movies={movies.addTopRatedMovies}/>
+      <MovieList title={"Popular Movies"} movies={movies.addPopularMovies}/>
       <MovieList title={"Anime Movies"} movies={movies.addNowPlayingMovies}/>
       <MovieList title={"Adult Movies"} movies={movies.addNowPlayingMovies}/>
       </div>
     </div>
   )
-}
+};
 
 export default SecondContainer;
