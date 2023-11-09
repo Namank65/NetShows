@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../Utils/UserSlice';
+import { toggleGpt } from '../Utils/GptSlice';
 
 
 const Header = () => {
@@ -41,14 +42,19 @@ const Header = () => {
 
   }, [])
 
+  const GptHandelClicked = () => {
+    dispatch(toggleGpt());
+  }
+
 
   return (
-    <div className='flex absolute bg-gradient-to-b from-black z-10 w-screen justify-between pr-5 h-24 '>
+    <div className='flex absolute bg-gradient-to-b from-black z-10 w-screen justify-between pr-5  '>
       <img alt='logo' src={logo} className=' w-48' />
 
-      {user && (<div className='flex w-[12%] p-4'>
+      {user && (<div className='flex   p-4'>
         <img className='w-14 p-2 rounded-full' alt='UserPic' src={user?.photoURL} />
-        <button className='px-2 py-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800' onClick={SignOutHandeler}>Log Out</button>
+        <button className='p-2 mr-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800' onClick={SignOutHandeler}>Log Out</button>
+        <button className='bg-purple-700 hover:bg-purple-800 text-white p-4 mx-2 rounded-lg' onClick={GptHandelClicked} >GPT Search</button>
       </div>)}
 
     </div>
