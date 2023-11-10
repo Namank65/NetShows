@@ -9,4 +9,8 @@ export const API_OPTIONS = {
     }
   };
 
-export const POSTER_CDN = "https://image.tmdb.org/t/p/w500/" 
+export const POSTER_CDN = "https://image.tmdb.org/t/p/w500/";
+
+export const LANGUAGE_CONSTANT = [{identifiyer: "en", name: "English"}, {identifiyer: "Hindi", name: "Hindi"},{identifiyer: "French", name: "French"}];
+
+export const OPENAI_KEY = "sk-MOMeWwV1stw2qm8oTW1hT3BnnnlbkFJczkMoKTS8Wv03MRJZwSy";
