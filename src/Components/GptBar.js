@@ -1,19 +1,45 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import lang from '../Utils/LangConstant';
 import { useSelector } from 'react-redux';
+import openai from '../Utils/Openai';
+import { API_OPTIONS } from '../Utils/Constants';
 
 const GptBar = () => {
 
     const LangKey = useSelector(store => store.Config.lang);
+    const searchText = useRef(null)
+
+    const searchMovieTmdb = async (movie) => {
+        const data = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language=en-US&page=1', API_OPTIONS);
+        const json = await data.json();
+        console.log(json)
+
+        return json.results;
+    }
+
+    const HandelclickedGptSearch = async () => {
+        console.log(searchText.current.value);
+
+        const getQuery = "Act as a movie recommendation system and suggest some movies for the query : " + searchText.current.value + "only give me name of 5 movies, comma seperated like the example result given ahead. Example results: Gadar, Don, Koi mil gaya, Kuch kuch hota hai, Golmaal"
+
+        const gptResults = await openai.chat.completions.create({
+            messages: [{ role: 'user', content: getQuery }],
+            model: 'gpt-3.5-turbo',
+        });
+
+        const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
+        console.log(gptMovies)
+
+        const PromiseArray = gptMovies.map(movie => searchMovieTmdb(movie));
+        console.log(PromiseArray)// temproray written
+    }
 
     return (
         <div className='flex justify-center pt-[20%]'>
-            {/* <div  className='text-black flex justify-center'>
-                <h1>GPT Search</h1>
-                </div> */}
+
             <form className='w-1/2 p-2 rounded-lg bg-black flex justify-center' onSubmit={(e) => e.preventDefault()}>
-                <input className='px-8 py-3 w-1/2 rounded-l-full bg-purple-200' type='text' placeholder={lang[LangKey].GptPlaceHolder} />
-                <button className='px-8 py-3  bg-purple-700 text-white rounded-r-full hover:bg-purple-800'>{lang[LangKey].search}</button>
+                <input className='px-8 py-3 w-1/2 rounded-l-full bg-purple-200' type='text' placeholder={lang[LangKey].GptPlaceHolder} ref={searchText} />
+                <button className='px-8 py-3  bg-purple-700 text-white rounded-r-full hover:bg-purple-800' onClick={HandelclickedGptSearch}>{lang[LangKey].search}</button>
             </form>
         </div>
     )
