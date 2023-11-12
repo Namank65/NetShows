@@ -13,4 +13,4 @@ export const POSTER_CDN = "https://image.tmdb.org/t/p/w500/";
 
 export const LANGUAGE_CONSTANT = [{identifiyer: "en", name: "English"}, {identifiyer: "Hindi", name: "Hindi"},{identifiyer: "French", name: "French"}];
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "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";

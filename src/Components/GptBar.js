@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import lang from '../Utils/LangConstant';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import openai from '../Utils/Openai';
 import { API_OPTIONS } from '../Utils/Constants';
+import { AddGptSearchResults } from '../Utils/GptSlice';
 
 const GptBar = () => {
 
     const LangKey = useSelector(store => store.Config.lang);
+    const Dispatch = useDispatch();
     const searchText = useRef(null)
 
     const searchMovieTmdb = async (movie) => {
@@ -30,9 +32,14 @@ const GptBar = () => {
         const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
         console.log(gptMovies)
 
-        const PromiseArray = gptMovies.map(movie => searchMovieTmdb(movie));
-        console.log(PromiseArray)// temproray written
-    }
+        const PromiseArray = gptMovies.map(movie =>  searchMovieTmdb(movie));
+        const TmdbResults = await Promise.all(PromiseArray);
+
+
+        console.log(TmdbResults);
+        Dispatch(AddGptSearchResults({MovieNames:gptMovies, MovieResults:TmdbResults}));
+
+    };
 
     return (
         <div className='flex justify-center pt-[20%]'>
