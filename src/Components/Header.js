@@ -24,7 +24,7 @@ const Header = () => {
     }).catch((error) => {
       // An error happened.
     });
-  }
+  };
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (user) => {
@@ -55,8 +55,8 @@ const Header = () => {
 
 
   return (
-    <div className='flex absolute bg-gradient-to-b from-black z-10 w-screen justify-between pr-5 bg-black sm:bg-blue-700 md:bg-green-600 '>
-      <img alt='logo' src={logo} className=' w-48' />
+    <div className='flex absolute bg-gradient-to-b from-black z-10 w-screen justify-between pr-5 flex-col md:flex-row bg-black  md:bg-green-600 '>
+      <img alt='logo' src={logo} className='w-48' />
 
       {user && (<div className='flex p-4'>
 
