@@ -20,7 +20,6 @@ const GptBar = () => {
     }
 
     const HandelclickedGptSearch = async () => {
-        console.log(searchText.current.value);
 
         const getQuery = "Act as a movie recommendation system and suggest some movies for the query : " + searchText.current.value + "only give me name of 5 movies, comma seperated like the example result given ahead. Example results: Gadar, Don, Koi mil gaya, Kuch kuch hota hai, Golmaal"
 
