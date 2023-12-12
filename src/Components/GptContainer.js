@@ -10,7 +10,6 @@ const GptContainer = () => {
       <div className='fixed -z-10'>
         <img alt='bg img' className='w-screen h-screen' src={LogInBgImg}/>
       </div>
-
         <GptBar/>
         <GptSearchSugg/>
     </div>
