@@ -73,10 +73,10 @@ const Login = () => {
       <Header />
 
       <div className='absolute'>
-        <img className='w-screen h-screen' alt='LogInBgImg' src={LogInBgImg} />
+        <img className='h-screen object-cover' alt='LogInBgImg' src={LogInBgImg} />
       </div>
 
-      <form className='bg-black bg-opacity-80 text-white h-auto w-96 py-10 px-10 m-5 mx-auto my-auto top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
+      <form className='bg-black bg-opacity-80 text-white h-auto w-[22rem] md:w-96 py-10 px-10 m-5 mx-auto my-auto top-36 md:top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
         <h1 className='p-2 my-2 font-bold text-3xl'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
         {!isSignIn && (<input type='text' ref={name} placeholder='User Name' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
         {!isSignIn && (<input type='number' placeholder='Enter Your Phone Number' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
