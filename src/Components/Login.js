@@ -73,7 +73,7 @@ const Login = () => {
       <Header />
 
       <div className='absolute'>
-        <img className='h-screen object-cover' alt='LogInBgImg' src={LogInBgImg} />
+        <img className='h-screen object-cover md:w-screen' alt='LogInBgImg' src={LogInBgImg} />
       </div>
 
       <form className='bg-black bg-opacity-80 text-white h-auto w-[22rem] md:w-96 py-10 px-10 m-5 mx-auto my-auto top-36 md:top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
@@ -86,7 +86,7 @@ const Login = () => {
 
         <p className='text-red-600 font-bold py-2'>{errorMessage}</p>
         <button className='p-3 my-5 bg-red-700 w-72 font-bold rounded-lg hover:bg-red-800 ' onClick={SubmitBtnClick}>{isSignIn ? "Sign In" : "Sign Up"}</button>
-        <p className='cursor-pointer py-4' onClick={toggleForm} style={{ color: isSignIn ? "white" : "skyblue" }}>{isSignIn ? "New to Net Show ? Sign Up now" : "Already A User ? Sign In Now "}</p>
+        <p className='cursor-pointer py-4 text-slate-300 hover:text-red-500' onClick={toggleForm} >{isSignIn ? "New to Net Show ? Sign Up now" : "Already A User ? Sign In Now "}</p>
       </form>
 
     </div>

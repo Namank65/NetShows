@@ -41,9 +41,9 @@ const GptBar = () => {
     };
 
     return (
-        <div className='flex justify-center pt-[20%]'>
+        <div className='flex justify-center md:flex-row flex-col items-center h-screen'>
 
-            <form className='w-1/2 p-2 rounded-lg bg-black flex justify-center' onSubmit={(e) => e.preventDefault()}>
+            <form className='md:w-1/2 p-2 rounded-lg bg-black flex justify-center' onSubmit={(e) => e.preventDefault()}>
                 <input className='px-8 py-3 w-1/2 rounded-l-full bg-purple-200' type='text' placeholder={lang[LangKey].GptPlaceHolder} ref={searchText} />
                 <button className='px-8 py-3  bg-purple-700 text-white rounded-r-full hover:bg-purple-800' onClick={HandelclickedGptSearch}>{lang[LangKey].search}</button>
             </form>
