@@ -58,11 +58,13 @@ const Header = () => {
   };
 
   return (
-    <div className="flex absolute bg-gradient-to-b z-10 w-full justify-between pr-5 flex-col md:flex-row  ">
+    <div className="flex absolute bg-gradient-to-b from-black z-10 w-full justify-between pr-5 flex-col md:flex-row items-center ">
+      <div>
       <img alt="logo" src={logo} className="w-48" />
+      </div>
 
       {user && (
-        <div className="flex py-2">
+        <div className="flex h-12">
           {ShowLangSelector && (
             <select
               className="bg-slate-800 text-white px-6 mx-2 rounded-lg hover:bg-slate-600"
@@ -77,18 +79,18 @@ const Header = () => {
           )}
 
           <img
-            className="w-14 p-2 rounded-full"
+            className="w-14 p-2 rounded-full object-contain"
             alt="UserPic"
             src={user?.photoURL}
           />
           <button
-            className="px-1 py-1 mr-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800"
+            className="px-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800"
             onClick={SignOutHandeler}
           >
             Log Out
           </button>
           <button
-            className="bg-purple-700 hover:bg-purple-800 text-white p-4 mx-2 rounded-lg"
+            className="bg-purple-700 hover:bg-purple-800 text-white px-2 ml-2 rounded-lg"
             onClick={GptHandelClicked}
           >
             {ShowLangSelector ? "Home Page" : "GPT Search"}
