@@ -76,10 +76,9 @@ const Login = () => {
         <img className='h-screen object-cover md:w-screen' alt='LogInBgImg' src={LogInBgImg} />
       </div>
 
-      <form className='bg-black bg-opacity-80 text-white h-auto w-[22rem] md:w-96 py-10 px-10 m-5 mx-auto my-auto top-36 md:top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
+      <form className='bg-black bg-opacity-80 text-white h-auto w-[22rem] md:w-96 md:py-10 py-0 px-10 m-5 mx-auto my-auto top-36 md:top-[60px] right-0 left-0 absolute rounded-lg ' onSubmit={(e) => (e.preventDefault())}>
         <h1 className='p-2 my-2 font-bold text-3xl'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
         {!isSignIn && (<input type='text' ref={name} placeholder='User Name' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
-        {!isSignIn && (<input type='number' placeholder='Enter Your Phone Number' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />)}
 
         <input type='email' ref={email} placeholder='Email Address' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />
         <input type='password' ref={password} placeholder='Password' className='p-3 my-4 w-72 bg-slate-800 rounded-md' />
@@ -87,6 +86,7 @@ const Login = () => {
         <p className='text-red-600 font-bold py-2'>{errorMessage}</p>
         <button className='p-3 my-5 bg-red-700 w-72 font-bold rounded-lg hover:bg-red-800 ' onClick={SubmitBtnClick}>{isSignIn ? "Sign In" : "Sign Up"}</button>
         <p className='cursor-pointer py-4 text-slate-300 hover:text-red-500' onClick={toggleForm} >{isSignIn ? "New to Net Show ? Sign Up now" : "Already A User ? Sign In Now "}</p>
+        <p className='py-4 text-xs cursor-text text-slate-300' > Dont want to signUp? use these demo Credentials <br/> Email- <span className='font-extrabold'>demo003@gmail.com</span> <br/>Password- <span className='font-extrabold'>Demo003@</span></p>
       </form>
 
     </div>
