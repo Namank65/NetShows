@@ -20,10 +20,15 @@ const Browse = () => {
   useTopRatedMovies(),
   usePopularMovies(),
   useUpcomingMovies()])
-  console.log(result)
+  // console.log(result)
   }
 
 AllData()
+
+// useNowPlayingMovies()
+//   useTopRatedMovies()
+//   usePopularMovies()
+//   useUpcomingMovies()
 
   
 

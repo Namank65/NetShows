@@ -5,10 +5,6 @@ import VideoBackGround from "./VideoBackGround";
 
 const MainContainer = () => {
 
-  const data = async () => {
-    
-  }
-
   const movies = useSelector((store) => store.movies?.addNowPlayingMovies);
   if (!movies) return;
 
@@ -17,8 +13,7 @@ const MainContainer = () => {
   const MainMovies = movies[random];
   console.log(random);
   const { original_title, overview, id, release_date } = MainMovies;
-  //  Promise.all(MainMovies)
-  
+
   return (
     <div>
       <VideoTitle

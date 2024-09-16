@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import VideoBackGround from './VideoBackGround'
 import { useSelector } from 'react-redux';
 import useMovieTrailer from '../Hooks/UseMovieTrailer';
@@ -7,6 +7,8 @@ import { useSearchParams } from 'react-router-dom';
 const VideoFullInfo = () => {
   const [searchParems] = useSearchParams();
   console.log(searchParems.get('v'))
+
+  // useEffect(() => {}, [])
 
   const trailerVideo = useSelector(store => store.movies?.addTrailer);
   console.log(trailerVideo);
