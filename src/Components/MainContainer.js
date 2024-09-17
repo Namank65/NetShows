@@ -11,7 +11,6 @@ const MainContainer = () => {
 
   const random = Math.floor(Math.random() * 10);
   const MainMovies = movies[random];
-  console.log(random);
   const { original_title, overview, id, release_date } = MainMovies;
 
   return (

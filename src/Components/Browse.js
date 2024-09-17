@@ -15,20 +15,20 @@ const Browse = () => {
 
   const showGptSearch = useSelector(store => store.Gpt.showGptSearch);
 
-  const AllData = async () => {
- const result = await Promise.all([useNowPlayingMovies(),
-  useTopRatedMovies(),
-  usePopularMovies(),
-  useUpcomingMovies()])
-  // console.log(result)
-  }
+//   const AllData = async () => {
+//  const result = await Promise.all([useNowPlayingMovies(),
+//   useTopRatedMovies(),
+//   usePopularMovies(),
+//   useUpcomingMovies()])
+//   console.log(result)
+//   }
 
-AllData()
+// AllData()
 
-// useNowPlayingMovies()
-//   useTopRatedMovies()
-//   usePopularMovies()
-//   useUpcomingMovies()
+useNowPlayingMovies()
+  useTopRatedMovies()
+  usePopularMovies()
+  useUpcomingMovies()
 
   
 
