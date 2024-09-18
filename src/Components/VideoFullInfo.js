@@ -1,14 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import UseVideoInfoDisplay from '../Hooks/UseVideoInfoDisplay';
+import { addVideoInfoDisplay } from "../Utils/MoviesSlice";
 
 const VideoFullInfo = () => {
   const [searchParems] = useSearchParams();
   const id = searchParems.get('v')
-  console.log(id)
-
   const trailerVideo = useSelector(store => store.movies?.addVideoInfoDisplay);
+
+
+  console.log(id)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+trailerVideo && dispatch(addVideoInfoDisplay(null))
+  }, [])
+
   UseVideoInfoDisplay(id);
   
   return (

@@ -30,6 +30,7 @@ useNowPlayingMovies()
   usePopularMovies()
   useUpcomingMovies()
 
+console.log("rerender");
   
 
   return (
