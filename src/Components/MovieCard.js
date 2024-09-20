@@ -1,7 +1,6 @@
 import React from "react";
 import { POSTER_CDN } from "../Utils/Constants";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const MovieCard = ({ posterPath, movieId }) => {
   if (!posterPath) return null;

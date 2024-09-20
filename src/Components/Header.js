@@ -17,12 +17,6 @@ const Header = () => {
 
   const SignOutHandeler = () => {
     signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
   };
 
   useEffect(() => {
@@ -60,11 +54,11 @@ const Header = () => {
   return (
     <div className="flex absolute bg-gradient-to-b from-black z-10 w-full justify-between pr-5 flex-col md:flex-row items-center ">
       <div>
-      <img alt="logo" src={logo} className="w-48" />
+      <img alt="logo" src={logo} className="md:w-48 w-32" />
       </div>
 
       {user && (
-        <div className="flex h-12">
+        <div className="flex md:h-12 h-8">
           {ShowLangSelector && (
             <select
               className="bg-slate-800 text-white px-6 mx-2 rounded-lg hover:bg-slate-600"
@@ -78,11 +72,7 @@ const Header = () => {
             </select>
           )}
 
-          <img
-            className="w-14 p-2 rounded-full object-contain"
-            alt="UserPic"
-            src={user?.photoURL}
-          />
+
           <button
             className="px-2 font-bold bg-red-700 text-white rounded-lg hover:bg-red-800"
             onClick={SignOutHandeler}
